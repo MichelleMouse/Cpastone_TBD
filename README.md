@@ -6,7 +6,7 @@ Welcome to my Capstone Project for my [Udacity's C++ Nanodegree](https://www.uda
 
 <!-- IMAGE OR GIF OR VIDEO OF THE APPLICATION --->
 
-## EnvironmentÂ
+## Environment
 👉 macOS 12.1 Monterey with 8-Core Intel Core i7 chip  
 👉 Homebrew 3.3.5  
 👉 cMake 3.21.3  

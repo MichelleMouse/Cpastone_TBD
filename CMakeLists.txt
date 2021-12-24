@@ -7,7 +7,7 @@ add_definitions(-std=c++17)
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
-project(TBD)
+project(Snake_Game)
 
 # Locates SDL2_image library
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
@@ -17,7 +17,7 @@ include_directories(${SDL2_INCLUDE_DIRS} src)
 
 # Find all executables
 include_directories(include)
-add_executable(TBD src/*.cpp)
+add_executable(Snake src/main.cpp src/renderer.cpp src/snake.cpp src/game.cpp src/controller.cpp)
 
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
-target_link_libraries(TBD ${SDL2_LIBRARIES})
+target_link_libraries(Snake ${SDL2_LIBRARIES})
