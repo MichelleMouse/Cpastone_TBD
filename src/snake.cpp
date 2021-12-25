@@ -22,6 +22,12 @@ void Snake::Update()
   {
     UpdateBody(current_cell, prev_cell);
   }
+
+  //If the snake's head has collided with the grid edges
+  // if(current_cell.x > m_grid_width || current_cell.y > m_grid_height)
+  // {
+  //   std::cout << "The snake touched the border\n";
+  // }
 }
 
 //Updates the head position according to the direction of the snake
@@ -46,10 +52,11 @@ void Snake::UpdateHead()
       break;
   }
 
-  //TO DO #1
-  //Need to call collision if the snake is going off the screen
-  head_x = fmod(head_x + m_grid_width, m_grid_width);
-  head_y = fmod(head_y + m_grid_height, m_grid_height);
+  //Kills the snake if the head goes beyond the limits of the grid
+  if(head_x > m_grid_width && head_y > m_grid_height)
+  {
+    m_alive = false;
+  }
 }
 
 //Updates the body of the snake according to the position of the head
@@ -100,7 +107,7 @@ bool Snake::SnakeCell(int x, int y)
   return false;
 }
 
-void Collision()
+void Snake::Collision()
 {
 
 }

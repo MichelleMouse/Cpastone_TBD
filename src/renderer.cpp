@@ -14,8 +14,8 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
   }
 
   //Creates a window
-  m_window.reset(SDL_CreateWindow("Snake Game!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screen_w, m_screen_h, SDL_WINDOW_SHOWN));
-  if(m_window)
+  m_window.reset(SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screen_w, m_screen_h, SDL_WINDOW_SHOWN));
+  if(!m_window)
   {
     std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "Window could not be created\n";
@@ -24,7 +24,7 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
 
   //Creates renderer
   m_renderer.reset(SDL_CreateRenderer(m_window.get(), -1, SDL_RENDERER_ACCELERATED));
-  if(m_renderer)
+  if(!m_renderer)
   {
     std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "Renderer could not be created\n";

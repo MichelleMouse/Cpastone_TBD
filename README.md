@@ -4,7 +4,16 @@
 
 Welcome to my Capstone Project for my [Udacity's C++ Nanodegree](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213)!
 
+For this project, I chose to improve the SDL game Snake. I will add/have added the following features to the game:
+🐍 The snakes dies when it runs into the edges of the grid, instead of going through
+<!-- 🐍 High scores table
+🐍 Splash screen with selection of mode (one player, two players, high scores)
+🐍 Enemy snake that uses A* search to look for the food -->
+
 <!-- IMAGE OR GIF OR VIDEO OF THE APPLICATION --->
+
+## File and Class Structure
+TBD
 
 ## Environment
 👉 macOS 12.1 Monterey with 8-Core Intel Core i7 chip  
@@ -13,11 +22,8 @@ Welcome to my Capstone Project for my [Udacity's C++ Nanodegree](https://www.uda
 👉 GNU Make 3.81  
 👉 C++ 17  
 👉 Apple clang version 13.0.0  
-👉 SDL 2.0.18. Click [here](https://www.libsdl.org/download-2.0.php) for installation instructions.
+👉 SDL 2.0.18. [Download SDL](https://www.libsdl.org/download-2.0.php) from the official website.
 
-Work in progress
-
-<!--
 ## Compiling and Running
 ### Compile
 Create a `build` folder and change to that directory
@@ -33,15 +39,12 @@ cmake .. && make
 ### Running
 The executable is within the `build` directory. You can run it as follows
 ```
-./TBD
+./Snake
 ```
--->
 
-<!--  
-
-Steps to complete hte project
-1. Identify the project you want to build, as simple as possible
-2. Scope the project. Sketch an outline on how the application will work (check the rubric). At least 5 total criteria from the rest of the rubric
-3. Build the application
-4. Document your work. Write a short README (instruction for running, overview of code structure, explanation of how it satisfies the necessary rubric)
---->
+## Rubric Points
+| Rubric      |     File    |   Line Numbers |
+| ----------- | ----------- |   -----------  |
+| Header      | Title       |                |
+|             | Example
+| Paragraph   | Text        |                |
