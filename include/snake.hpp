@@ -23,17 +23,18 @@ public:
   //Getters && Setters
   void setAlive(bool status) { m_alive = status; }
   void setSpeed(float inc) { m_speed += inc; }
+  void setReset(bool reset) { m_reset = reset; }
   bool getAlive() const { return m_alive; }
   int getSize() const { return m_size; }
   float getHeadX() const { return m_head_x; }
   float getHeadY() const { return m_head_y; }
+  bool getReset() const { return m_reset; }
 
   //Behaviour methods
   void Update();
   void GrowBody();
   bool SnakeCell(int x, int y);
-  void resetSize() { m_size = 1; }
-  void resetSpeed() { m_speed = 0.1f; }
+  void resetSnake();
 
   //Variables
   Direction direction = Direction::kUp;
@@ -49,6 +50,7 @@ private:
   int m_grid_height;
   bool m_growing{false};
   bool m_alive{true};
+  bool m_reset{false};
   int m_size{1};
   float m_speed{0.1f};
   float m_head_x;

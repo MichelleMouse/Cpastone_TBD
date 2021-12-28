@@ -100,3 +100,14 @@ bool Snake::SnakeCell(int x, int y)
 
   return false;
 }
+
+//Resets snake
+void Snake::resetSnake()
+{
+  m_size = 1;
+  m_speed = 0.1f;
+  m_alive = true;
+  m_head_x = m_grid_width/2;
+  m_head_y = m_grid_height/2;
+  body.clear();
+}

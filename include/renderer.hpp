@@ -5,6 +5,7 @@
 #include <mutex>
 #include <vector>
 #include "SDL.h"
+#include "SDL_image.h"
 #include "snake.hpp"
 
 //So I can create a unique_ptr of SDL_Window
@@ -41,6 +42,10 @@ private:
   //SDL Variables
   std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> m_window;
   std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> m_renderer;
+  std::unique_ptr<SDL_Surface> m_surface;
+
+  typedef std::shared_ptr<SDL_Texture> SharedTexture;
+  SharedTexture m_texture;
 
   //Variables
   const std::size_t m_screen_w;
@@ -48,6 +53,9 @@ private:
   const std::size_t m_grid_w;
   const std::size_t m_grid_h;
   std::mutex m_mtx;
+
+  //Typical behaviour methods
+  inline SharedTexture make_shared(SDL_Texture* texture) { return SharedTexture(texture, SDL_DestroyTexture); }
 };
 
 #endif /*   renderer.hpp    */

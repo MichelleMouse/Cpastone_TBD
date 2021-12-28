@@ -25,6 +25,14 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     controller.HandleInput(running, snake);
     Update();
 
+    if(snake->getReset())
+    {
+      score = 0;
+      snake->resetSnake();
+      // std::cout << "Snake size " << snake->getSize() << "\n";
+      snake->setReset(false);
+    }
+
     //Renders the different screens according to the state of the snake
     if(snake->getAlive()) //If the snake is alive
     {
@@ -32,6 +40,8 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     } else {
       renderer.Render();
     }
+
+    // std::cout << "Snake size " << snake->getSize() << "\n";
 
     frame_end = SDL_GetTicks();
 
