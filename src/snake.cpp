@@ -6,15 +6,15 @@ void Snake::Update()
   //Captures the position of the head prior to updating it
   SDL_Point prev_cell
   {
-    static_cast<int>(head_x),
-    static_cast<int>(head_y)
+    static_cast<int>(m_head_x),
+    static_cast<int>(m_head_y)
   };
   UpdateHead();
   //Captures the position of the head after updating it
   SDL_Point current_cell
   {
-    static_cast<int>(head_x),
-    static_cast<int>(head_y)
+    static_cast<int>(m_head_x),
+    static_cast<int>(m_head_y)
   };
 
   //If the snake's head has moved to a new cell, it updates the body vector
@@ -22,12 +22,6 @@ void Snake::Update()
   {
     UpdateBody(current_cell, prev_cell);
   }
-
-  //If the snake's head has collided with the grid edges
-  // if(current_cell.x > m_grid_width || current_cell.y > m_grid_height)
-  // {
-  //   std::cout << "The snake touched the border\n";
-  // }
 }
 
 //Updates the head position according to the direction of the snake
@@ -36,24 +30,24 @@ void Snake::UpdateHead()
   switch(direction)
   {
     case Direction::kUp:
-      head_y -= speed;
+      m_head_y -= m_speed;
       break;
 
     case Direction::kDown:
-      head_y += speed;
+      m_head_y += m_speed;
       break;
 
     case Direction::kLeft:
-      head_x -= speed;
+      m_head_x -= m_speed;
       break;
 
     case Direction::kRight:
-      head_x += speed;
+      m_head_x += m_speed;
       break;
   }
 
   //Kills the snake if the head goes beyond the limits of the grid
-  if(head_x > m_grid_width && head_y > m_grid_height)
+  if(((int)(m_grid_width - m_head_x) | (int)(m_head_x - 0) | (int)(m_grid_height - m_head_y) | (int)(m_head_y - 0)) <= 0)
   {
     m_alive = false;
   }
@@ -70,7 +64,7 @@ void Snake::UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell)
     body.erase(body.begin());
   } else {
     m_growing = false;
-    size++;
+    m_size++;
   }
 
   //Checks if the snake has died
@@ -91,7 +85,7 @@ void Snake::GrowBody()
 //Need to make efficient
 bool Snake::SnakeCell(int x, int y)
 {
-  if(x == static_cast<int>(head_x) && y == static_cast<int>(head_y))
+  if(x == static_cast<int>(m_head_x) && y == static_cast<int>(m_head_y))
   {
     return true;
   }
@@ -105,9 +99,4 @@ bool Snake::SnakeCell(int x, int y)
   }
 
   return false;
-}
-
-void Snake::Collision()
-{
-
 }

@@ -1,6 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <memory>
 #include <random>
 #include "controller.hpp"
 #include "renderer.hpp"
@@ -18,10 +19,11 @@ public:
 
   //Getters && Setters
   int GetScore() const { return score; }
-  int GetSize() const { return snake.size; }
+  int GetSize() const { return snake->getSize(); }
 
 private:
-  Snake snake;
+  std::shared_ptr<Snake> snake;
+  // Snake snake;
   SDL_Point food;
 
   //Random Number Generator
@@ -37,4 +39,4 @@ private:
   void Update();
 };
 
-#endif
+#endif /*   game.hpp    */

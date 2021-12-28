@@ -43,8 +43,28 @@ The executable is within the `build` directory. You can run it as follows
 ```
 
 ## Rubric Points
-| Rubric      |     File    |   Line Numbers |
-| ----------- | ----------- |   -----------  |
-| Header      | Title       |                |
-|             | Example
-| Paragraph   | Text        |                |
+<!-- Going back to HTML because Markdown doesn't allow me to do the table properly --->
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Rubric</th>
+    <th>File</th>
+    <th>Line Numbers</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Loops, Functions, I/O</td>
+    <td>The project demonstrates and understanding of C++ functions and control structures</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>The project reads data from a fie and process the data, or the program writes data to a file</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>The project accepts user input and process the input</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>

@@ -21,9 +21,8 @@ int main()
   game.Run(controller, renderer, kMsPerFrame);
 
   //Prints score and size once the game is over
-  //TBC
   std::lock_guard<std::mutex> mLock(g_mtx);
-  std::cout << "Game has terminated successfully!\n";
+  std::cout << "Thanks for playin, come back soon :D\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
 

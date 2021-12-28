@@ -35,8 +35,19 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
 //Destroyer
 Renderer::~Renderer() { }
 
+//Renders the splash screens in the game
+void Renderer::Render()
+{
+  //Clears the screen
+  SDL_SetRenderDrawColor(m_renderer.get(), 0x52, 0x0B, 0x00, 0x58);
+  SDL_RenderClear(m_renderer.get());
+
+  //Updates the screen
+  SDL_RenderPresent(m_renderer.get());
+}
+
 //Renders the snake and the food in the screen
-void Renderer::Render(const Snake snake, const SDL_Point &food)
+void Renderer::Render(const std::shared_ptr<Snake> &snake, const SDL_Point &food)
 {
   SDL_Rect block;
   block.w = m_screen_w / m_grid_w;
@@ -47,25 +58,25 @@ void Renderer::Render(const Snake snake, const SDL_Point &food)
   SDL_RenderClear(m_renderer.get());
 
   //Renders food in the screen
-  SDL_SetRenderDrawColor(m_renderer.get(), 0xFF, 0xCC, 0x00, 0xFF);
+  SDL_SetRenderDrawColor(m_renderer.get(), 0x00, 0xFF, 0x91, 0xFF);
   block.x = food.x * block.w;
   block.y = food.y * block.h;
   SDL_RenderFillRect(m_renderer.get(), &block);
 
   //Renders the Snake's body
-  SDL_SetRenderDrawColor(m_renderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
-  for (SDL_Point const &point : snake.body) {
+  SDL_SetRenderDrawColor(m_renderer.get(), 0x92, 0x00, 0xCC, 0xFF);
+  for (SDL_Point const &point : snake->body) {
     block.x = point.x * block.w;
     block.y = point.y * block.h;
     SDL_RenderFillRect(m_renderer.get(), &block);
   }
 
   //Render Snake's head
-  block.x = static_cast<int>(snake.head_x) * block.w;
-  block.y = static_cast<int>(snake.head_y) * block.h;
-  if(snake.getAlive())
+  block.x = static_cast<int>(snake->getHeadX()) * block.w;
+  block.y = static_cast<int>(snake->getHeadY()) * block.h;
+  if(snake->getAlive())
   {
-    SDL_SetRenderDrawColor(m_renderer.get(), 0x00, 0x7A, 0xCC, 0xFF);
+    SDL_SetRenderDrawColor(m_renderer.get(), 0x92, 0x00, 0xCC, 0xFF);
   } else {
     SDL_SetRenderDrawColor(m_renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
   }

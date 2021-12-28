@@ -33,7 +33,8 @@ public:
   ~Renderer();
 
   //Typical behaviour methods
-  void Render(Snake const snake, SDL_Point const &food);
+  void Render();
+  void Render(std::shared_ptr<Snake> const &snake, SDL_Point const &food);
   void UpdateWindowTitle(int score, int fps);
 
 private:
@@ -49,4 +50,4 @@ private:
   std::mutex m_mtx;
 };
 
-#endif
+#endif /*   renderer.hpp    */

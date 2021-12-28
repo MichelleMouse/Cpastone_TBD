@@ -3,16 +3,16 @@
 #include "SDL.h"
 #include "snake.hpp"
 
-void Controller::ChangeDirection(Snake &snake, Snake::Direction input, Snake::Direction opposite) const
+void Controller::ChangeDirection(std::shared_ptr<Snake> &snake, Snake::Direction input, Snake::Direction opposite) const
 {
-  if(snake.direction != opposite || snake.size == 1)
+  if(snake->direction != opposite || snake->getSize() == 1)
   {
-    snake.direction = input;
+    snake->direction = input;
   }
   return;
 }
 
-void Controller::HandleInput(bool &running, Snake &snake) const
+void Controller::HandleInput(bool &running, std::shared_ptr<Snake> &snake) const
 {
   SDL_Event e;
 
@@ -40,6 +40,8 @@ void Controller::HandleInput(bool &running, Snake &snake) const
           ChangeDirection(snake, Snake::Direction::kRight, Snake::Direction::kLeft);
           break;
       }
+    } else if (e.type == SDL_MOUSEBUTTONUP) {
+      std::cout << "X " << e.button.x << " and Y " << e.button.y << "\n";
     }
   }
 }
