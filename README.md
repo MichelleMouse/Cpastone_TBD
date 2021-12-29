@@ -4,24 +4,24 @@
 
 Welcome to my Capstone Project for my [Udacity's C++ Nanodegree](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213)!
 
-For this project, I chose to improve the SDL game Snake. I will add/have added the following features to the game:
-🐍 The snakes dies when it runs into the edges of the grid, instead of going through
-🐍 Replay button to restart the game from zero
+For this project, I chose to improve the SDL game Snake. I will add/have added the following features to the game:  
+🐍 The snakes dies when it runs into the edges of the grid, instead of going through  
+🐍 Replay button to restart the game from zero  
 
 <p align="center"><img src="imgs/Game_screen.png" alt="Snake game" width="300" /><img src="imgs/Replay_screen.png" alt="Snake game" width="300" /></p>
 
 ## File and Class Structure
-The folder and file structure of the project is as follows:
-📂 cmake folder where extra `.cmake` files are stored. `FindSDL2_image.cmake` file helps locate the SDL and SDL_Image libraries in the computer
-📂 imgs folder with the images for the replay screen and the readme
-📂 include folder with all the `.hpp` files
-📂 src folder with all the `.cpp` files
+The folder and file structure of the project is as follows:  
+📂 cmake folder where extra `.cmake` files are stored. `FindSDL2_image.cmake` file helps locate the SDL and SDL_Image libraries in the computer  
+📂 imgs folder with the images for the replay screen and the readme  
+📂 include folder with all the `.hpp` files  
+📂 src folder with all the `.cpp` files  
 
-The class structure is as follows:
-🐍 A `Snake` class defined in the file `snake.hpp` and instantiated in the file `snake.cpp`. This class handles all the snake features, such as size, life status, body, head location, speed and reset.
-🎮 A `Controller` class defined in the file `controller.cpp` and instantiated in the file `controller.cpp`. This class handles all the user interactions (keys pressed and mouse events).
-🖥 A `Renderer` class defined in the file `renderer.cpp` and instantiated in the file `renderer.cpp`. This class takes care of the graphics of the game (colour of the snake, the food, creating the window, etc.).
-👾 A `Game` class defined in the file `game.cpp` and instantiated in the file `game.cpp`. This class handles the game loop (input, update, render).
+The class structure is as follows:  
+🐍 A `Snake` class defined in the file `snake.hpp` and instantiated in the file `snake.cpp`. This class handles all the snake features, such as size, life status, body, head location, speed and reset.  
+🎮 A `Controller` class defined in the file `controller.cpp` and instantiated in the file `controller.cpp`. This class handles all the user interactions (keys pressed and mouse events).  
+🖥 A `Renderer` class defined in the file `renderer.cpp` and instantiated in the file `renderer.cpp`. This class takes care of the graphics of the game (colour of the snake, the food, creating the window, etc.).  
+👾 A `Game` class defined in the file `game.cpp` and instantiated in the file `game.cpp`. This class handles the game loop (input, update, render).  
 
 The `main.cpp` file creates objects type `Game`, `Renderer` and `Controller`, to interact with each other.
 
