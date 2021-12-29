@@ -1,6 +1,7 @@
 #ifndef CONTROLLER_HPP
 #define CONTROLLER_HPP
 
+#include <memory>
 #include "SDL_image.h"
 #include "snake.hpp"
 

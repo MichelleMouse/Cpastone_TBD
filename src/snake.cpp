@@ -82,7 +82,6 @@ void Snake::GrowBody()
   m_growing = true;
 }
 
-//Need to make efficient
 bool Snake::SnakeCell(int x, int y)
 {
   if(x == static_cast<int>(m_head_x) && y == static_cast<int>(m_head_y))
