@@ -49,7 +49,7 @@ void Snake::UpdateHead()
   //Kills the snake if the head goes beyond the limits of the grid
   if(((int)(m_grid_width - m_head_x) | (int)(m_head_x - 0) | (int)(m_grid_height - m_head_y) | (int)(m_head_y - 0)) <= 0)
   {
-    m_alive = false;
+    losesLive();
   }
 }
 
@@ -82,6 +82,11 @@ void Snake::GrowBody()
   m_growing = true;
 }
 
+void Snake::shrinkSnake()
+{
+  body.pop_back();
+}
+
 bool Snake::SnakeCell(int x, int y)
 {
   if(x == static_cast<int>(m_head_x) && y == static_cast<int>(m_head_y))
@@ -108,5 +113,27 @@ void Snake::resetSnake()
   m_alive = true;
   m_head_x = m_grid_width/2;
   m_head_y = m_grid_height/2;
+  m_lives = 3;
+  m_reset = false;
   body.clear();
+}
+
+//Adds an extra live to the Snake, for a maximum of 4
+void Snake::gainsLive()
+{
+  if(m_lives < 4)
+  {
+    m_lives += 1;
+  }
+}
+
+//Loses a live
+void Snake::losesLive()
+{
+  if(m_lives > 0)
+  {
+    m_lives -= 1;
+  } else {
+    m_alive = false;
+  }
 }

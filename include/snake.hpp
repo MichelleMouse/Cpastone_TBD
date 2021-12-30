@@ -29,12 +29,16 @@ public:
   float getHeadX() const { return m_head_x; }
   float getHeadY() const { return m_head_y; }
   bool getReset() const { return m_reset; }
+  int getLives() const { return m_lives; }
 
   //Behaviour methods
   void Update();
   void GrowBody();
   bool SnakeCell(int x, int y);
   void resetSnake();
+  void gainsLive();
+  void losesLive();
+  void shrinkSnake();
 
   //Variables
   Direction direction = Direction::kUp;
@@ -52,6 +56,7 @@ private:
   bool m_alive{true};
   bool m_reset{false};
   int m_size{1};
+  int m_lives{3};
   float m_speed{0.1f};
   float m_head_x;
   float m_head_y;

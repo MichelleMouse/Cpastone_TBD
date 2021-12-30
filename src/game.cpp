@@ -2,7 +2,7 @@
 #include "game.hpp"
 #include "SDL.h"
 
-Game::Game(std::size_t grid_w, std::size_t grid_h) : snake(std::make_shared<Snake>(grid_w, grid_h)), engine(dev()), random_w(0, static_cast<int>(grid_w - 1)), random_h(0, static_cast<int>(grid_h - 1))
+Game::Game(std::size_t grid_w, std::size_t grid_h) : snake(std::make_shared<Snake>(grid_w, grid_h)), engine(dev()), random_w(0, static_cast<int>(grid_w - 1)), random_h(0, static_cast<int>(grid_h - 1)), random_f(0, 3)
 {
   PlaceFood();
 }
@@ -52,7 +52,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
     //Updates the window title after every second (1000 milliseconds)
     if(frame_end - title_timestamp >= 1000)
     {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(score, frame_count, snake->getLives());
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -67,18 +67,20 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
 
 void Game::PlaceFood()
 {
-  int x, y;
+  int x, y, f;
 
   while(true)
   {
     x = random_w(engine);
     y = random_h(engine);
+    f = random_f(engine);
 
     //Checks that the location is not occupied by the Snake
     if(!snake->SnakeCell(x, y))
     {
-      food.x = x;
-      food.y = y;
+      food.position.x = x;
+      food.position.y = y;
+      food.type = f;
       return;
     }
   }
@@ -97,12 +99,40 @@ void Game::Update()
   int new_y = static_cast<int>(snake->getHeadY());
 
   //Checks if the snake ate the food
-  if(food.x == new_x && food.y == new_y)
+  if(food.position.x == new_x && food.position.y == new_y)
   {
-    score++;
+    switch (food.type) {
+      case 0: //Good food! Snakes grows and speed goes up
+        score++;
+        snake->GrowBody();
+        snake->setSpeed(0.01);
+        break;
+
+      case 1: //Good food! Snake gains one extra live, up to four
+        snake->gainsLive();
+        break;
+
+      case 2: //Bad food :( Snake slows down and loses points(body parts)
+        if(score >= 1)
+        {
+          score--;
+          snake->shrinkSnake();
+          snake->setSpeed(-0.01);
+        } else {
+          snake->losesLive();
+        }
+        break;
+
+      case 3: //Bad food :( Snake loses a live
+        snake->losesLive();
+        break;
+
+      default:
+        score++;
+        snake->GrowBody();
+        snake->setSpeed(0.01);
+        break;
+    }
     PlaceFood(); //New food
-    //Grows the snake and increases the speed
-    snake->GrowBody();
-    snake->setSpeed(0.01);
   }
 }
