@@ -22,7 +22,6 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
     std::cerr << "IMG_Init: " << IMG_GetError() << "\n";
   }
 
-
   //Creates a window
   m_window.reset(SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screen_w, m_screen_h, SDL_WINDOW_SHOWN));
   if(!m_window)
@@ -82,10 +81,10 @@ void Renderer::Render(const std::shared_ptr<Snake> &snake, const Foods &food)
   SDL_RenderClear(m_renderer.get());
 
   //Renders food in the screen
-  SDL_Colour colour = food.colours[food.type];
+  SDL_Colour colour = food.getColour();
   SDL_SetRenderDrawColor(m_renderer.get(), colour.r, colour.g, colour.b, 0xFF);
-  block.x = food.position.x * block.w;
-  block.y = food.position.y * block.h;
+  block.x = food.getPosition().x * block.w;
+  block.y = food.getPosition().y * block.h;
   SDL_RenderFillRect(m_renderer.get(), &block);
 
   //Renders the Snake's body
@@ -111,8 +110,8 @@ void Renderer::Render(const std::shared_ptr<Snake> &snake, const Foods &food)
   SDL_RenderPresent(m_renderer.get());
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps, int lives)
+void Renderer::UpdateWindowTitle(int score, int fps, int lives, std::pair<std::string, int> high_score)
 {
-  std::string title{"Snake Score: " + std::to_string(score) + " Lives: " + std::to_string(lives) + " FPS: " + std::to_string(fps)};
+  std::string title{"Snake Score: " + std::to_string(score) + " Lives: " + std::to_string(lives) + " High Score: " + high_score.first + " " + std::to_string(high_score.second) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(m_window.get(), title.c_str());
 }

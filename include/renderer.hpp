@@ -3,6 +3,8 @@
 
 #include <memory>
 #include <mutex>
+#include <utility>
+#include <string>
 #include <vector>
 #include "food.hpp"
 #include "SDL.h"
@@ -37,7 +39,7 @@ public:
   //Typical behaviour methods
   void Render();
   void Render(std::shared_ptr<Snake> const &snake, Foods const &food);
-  void UpdateWindowTitle(int score, int fps, int lives);
+  void UpdateWindowTitle(int score, int fps, int lives, std::pair<std::string, int> high_score);
 
 private:
   //SDL Variables

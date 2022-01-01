@@ -1,12 +1,21 @@
-# Cpastone_TBD
+# Snake_Game
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg) [![Atom](https://badgen.net/badge/icon/atom?icon=atom&label)](https://atom.io)
 
 Welcome to my Capstone Project for my [Udacity's C++ Nanodegree](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213)!
 
-For this project, I chose to improve the SDL game Snake. I will add/have added the following features to the game:  
+For this project, I chose to improve the SDL game Snake inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) StackOverflow question and you can find Udacity's original repo [here](https://github.com/udacity/CppND-Capstone-Snake-Game).
+
+I will add/have added the following features to the game:  
 🐍 The snakes dies when it runs into the edges of the grid, instead of going through  
 🐍 Replay button to restart the game from zero  
+🐍 Save the latest 5 highest scores  
+🐍 Multithreading for the different types of food with different spawning time  
+🐍 There are four different types of food that affect the snake! The meaning of every food is as follows:  
+&nbsp;&nbsp;&nbsp;&nbsp;🟢 Good food that will increase your score, the snake grows and the speed will go up  
+&nbsp;&nbsp;&nbsp;&nbsp;🔵 Good food that will give you one extra live! You can gather up to 4 lives  
+&nbsp;&nbsp;&nbsp;&nbsp;🟠 The snake will slow down and shrink one block. You lose 1 point from your score  
+&nbsp;&nbsp;&nbsp;&nbsp;🔴 Bad food that will take one live from the snake!  
 
 <p align="center"><img src="imgs/Game_screen.png" alt="Snake game" width="300" /><img src="imgs/Replay_screen.png" alt="Snake game" width="300" /></p>
 
@@ -16,6 +25,7 @@ The folder and file structure of the project is as follows:
 📂 imgs folder with the images for the replay screen and the readme  
 📂 include folder with all the `.hpp` files  
 📂 src folder with all the `.cpp` files  
+📂 data folder contains the `.txt` file with the 5 highest scores in the game  
 
 The class structure is as follows:  
 🐍 A `Snake` class defined in the file `snake.hpp` and instantiated in the file `snake.cpp`. This class handles all the snake features, such as size, life status, body, head location, speed and reset.  
@@ -32,15 +42,20 @@ The `main.cpp` file creates objects type `Game`, `Renderer` and `Controller`, to
 👉 GNU Make 3.81  
 👉 C++ 17  
 👉 Apple clang version 13.0.0  
-👉 SDL 2.0.18. [Download SDL](https://www.libsdl.org/download-2.0.php) from the official website.
+👉 SDL 2.0.18. [Download SDL](https://www.libsdl.org/download-2.0.php) from the official website.  
 👉 SDL_Image 2.0
 
 ## Compiling and Running
-### Installing SDL_Image in Ubuntu
+### SDL_Image 2
+#### Ubuntu
 Run the following command in the terminal
 ```
 sudo apt-get install libsdl2-image-dev
 ```
+#### macOS
+Download the binary (`.dmg`) from [here](https://www.libsdl.org/projects/SDL_image/) and wait for it to download. Then move the `SDL2_image.framework` folder to `/Library/Frameworks/`.
+
+If you do not have the correct permission in the computer (i.e. root or admin), read the `ReadMe.txt` inside the downloaded `.dmg`
 
 ### Compile
 Create a `build` folder and change to that directory
@@ -60,7 +75,7 @@ The executable is within the `build` directory. You can run it as follows
 ```
 
 ## Rubric Points
-<!-- Going back to HTML because Markdown doesn't allow me to do the table properly --->
+<!-- Going back to HTML because Markdown restricts format too much --->
 <table>
   <tr>
     <th>Group</th>

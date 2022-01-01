@@ -1,8 +1,14 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <algorithm>
+#include <fstream>
 #include <memory>
-#include <random>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "controller.hpp"
 #include "food.hpp"
 #include "renderer.hpp"
@@ -17,6 +23,8 @@ public:
 
   //Typical behaviour methods
   void Run(Controller const &controller, Renderer &renderer, std::size_t target_frame_duration);
+  void SaveScore(int score);
+  void LoadScores();
 
   //Getters && Setters
   int GetScore() const { return score; }
@@ -24,17 +32,10 @@ public:
 
 private:
   std::shared_ptr<Snake> snake;
-  // Snake snake;
-  Foods food;
-
-  //Random Number Generator
-  std::random_device dev;                         //Used as a seed to feed mt19937
-  std::mt19937 engine;                            //Mersenne Twister Engine
-  std::uniform_int_distribution<int> random_w;    //0 to the grid width - 1
-  std::uniform_int_distribution<int> random_h;    //0 to the grid height - 1
-  std::uniform_int_distribution<int> random_f;    //0 to 3 for the type of food
+  Foods m_foods;
 
   int score{0};
+  std::vector <std::pair <std::string, int> > high_scores;
 
   //Typical behaviour methods
   void PlaceFood();

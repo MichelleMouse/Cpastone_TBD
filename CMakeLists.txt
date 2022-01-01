@@ -5,7 +5,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 add_definitions(-std=c++17)
 
-set(CXX_FLAGS "-Wall")
+set(CXX_FLAGS "-Wall -pthread")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(Snake_Game)
@@ -19,7 +19,7 @@ include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} src include)
 
 # Find all executables
 # include_directories(include)
-add_executable(Snake src/main.cpp src/renderer.cpp src/snake.cpp src/game.cpp src/controller.cpp)
+add_executable(Snake src/main.cpp src/renderer.cpp src/snake.cpp src/game.cpp src/controller.cpp src/food.cpp)
 
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(Snake ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
