@@ -10,7 +10,7 @@ I will add/have added the following features to the game:
 🐍 The snakes dies when it runs into the edges of the grid, instead of going through  
 🐍 Replay button to restart the game from zero  
 🐍 Save the latest 5 highest scores  
-🐍 Multithreading for the different types of food with different spawning time  
+<!-- 🐍 Multithreading for the different types of food with different spawning time   -->
 🐍 There are four different types of food that affect the snake! The meaning of every food is as follows:  
 &nbsp;&nbsp;&nbsp;&nbsp;🟢 Good food that will increase your score, the snake grows and the speed will go up  
 &nbsp;&nbsp;&nbsp;&nbsp;🔵 Good food that will give you one extra live! You can gather up to 4 lives  
@@ -84,10 +84,15 @@ The executable is within the `build` directory. You can run it as follows
     <th>Line Numbers</th>
   </tr>
   <tr>
-    <td rowspan="2">Loops, Functions, I/O</td>
+    <td rowspan="3">Loops, Functions, I/O</td>
     <td>The project demonstrates and understanding of C++ functions and control structures</td>
     <td>snake.hpp</td>
     <td>9 12</td>
+  </tr>
+  <tr>
+    <td>The project reads data from a file and process the data, or the program writes data to a file</td>
+    <td>game.cpp</td>
+    <td>135 154</td>
   </tr>
   <tr>
     <td>The project accepts user input and process the input</td>
@@ -102,18 +107,18 @@ The executable is within the `build` directory. You can run it as follows
   </tr>
   <tr>
     <td>Classes use appropriate access specifiers for class members</td>
-    <td>snake.hpp</td>
-    <td>11 43</td>
+    <td>snake.hpp <br/> food.hpp <br/> controller.hpp <br/> renderer.hpp <br/> game.hpp</td>
+    <td>11 47 <br> 12 27 36 48 <br/> 10 14 <br/> 34 44 <br/> 20 33 </td>
   </tr>
   <tr>
     <td>Class constructors utilise member initialisation lists</td>
-    <td>controller.cpp</td>
-    <td>6</td>
+    <td>controller.cpp <br/> snake.hpp <br/> food.cpp <br/> game.cpp</td>
+    <td>6 <br/> 21 <br/> 7 21 <br/> 5</td>
   </tr>
   <tr>
     <td>Classes encapsulate behaviour</td>
-    <td>snake.hpp</td>
-    <td>24 to 31</td>
+    <td>snake.hpp <br/> food.hpp</td>
+    <td>24 to 41 <br/> 17 to 22</td>
   </tr>
   <tr>
     <td>Overloaded functions allow the same function to operate on different parameters</td>
@@ -121,9 +126,14 @@ The executable is within the `build` directory. You can run it as follows
     <td>37 38</td>
   </tr>
   <tr>
-    <td rowspan="1">Memory Management</td>
+    <td rowspan="2">Memory Management</td>
+    <td>The project makes use of references in function declarations</td>
+    <td>renderer.hpp <br/> game.hpp <br/> controller.hpp <br/> food.hpp </br> snake.hpp</td>
+    <td>43 44 45 <br/> 25 <br/> 11 </br> 45 46 </br> 50</td>
+  </tr>
+  <tr>
     <td>The project uses smart pointers instead of raw pointers</td>
-    <td>renderer.hpp <br/> game.hpp</td>
-    <td>43 44 45 <br/> 25</td>
+    <td>renderer.hpp <br/> game.hpp <br/> controller.hpp <br/> food.hpp</td>
+    <td>46 47 48 <br/> 34 <br/> 22 </br> 49</td>
   </tr>
 </table>

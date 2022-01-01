@@ -68,7 +68,7 @@ int Foods::impact(int const &x, int const &y)
   {
     if(f->getState() && (x == f->getPosition().x && y == f->getPosition().y))
     {
-      std::cout << "Type of impact: " << f->getType() << "\n";
+      // std::cout << "Type of impact: " << f->getType() << "\n";
       f->reset();
       return f->getType();
     }
@@ -89,7 +89,7 @@ void Foods::placeFood(int const &x, int const &y)
 
     if(fX != x && fY != y && !m_food[m_active_food]->getState())
     {
-      std::cout << "\n\n\n\n\nx " << fX << " y " << fY << " T " << m_active_food << "\n";
+      // std::cout << "\n\n\n\n\nx " << fX << " y " << fY << " T " << m_active_food << "\n";
       m_food[m_active_food]->setPosition({fX, fY});
       m_food[m_active_food]->setState(true);
     }
