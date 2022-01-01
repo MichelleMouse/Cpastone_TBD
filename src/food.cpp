@@ -11,6 +11,12 @@ Food::Food(SDL_Colour colour, int type)
     , m_type(type)
 { }
 
+void Food::reset()
+{
+  m_state = false;
+  m_position = {-1, -1};
+}
+
 /*    Foods class     */
 Foods::Foods()
     : m_engine(m_dev())
@@ -48,6 +54,8 @@ SDL_Point Foods::getPosition() const
 {
   if(m_active_food != -1)
   {
+    // std::cout << "\n\n\nNew position x: " << m_food[m_active_food]->getPosition().x << " y: " << m_food[m_active_food]->getPosition().y << "\n";
+    // std::cout << "\n\n\nNew type: " << m_food[m_active_food]->getType() << "\n";
     return m_food[m_active_food]->getPosition();
   } else {
     return {-1, -1};
@@ -60,6 +68,8 @@ int Foods::impact(int const &x, int const &y)
   {
     if(f->getState() && (x == f->getPosition().x && y == f->getPosition().y))
     {
+      std::cout << "Type of impact: " << f->getType() << "\n";
+      f->reset();
       return f->getType();
     }
   }
@@ -71,17 +81,17 @@ void Foods::placeFood(int const &x, int const &y)
 {
   int fX, fY, fT;
 
-  fX = m_random_w(m_engine);
-  fY = m_random_h(m_engine);
-  fT = m_random_f(m_engine);
-
   // while(true)
   // {
-    if(fX != x && fY != y && !m_food[fT]->getState())
+    fX = m_random_w(m_engine);
+    fY = m_random_h(m_engine);
+    m_active_food = m_random_f(m_engine);
+
+    if(fX != x && fY != y && !m_food[m_active_food]->getState())
     {
-      m_food[fT]->setPosition({fX, fY});
-      m_food[fT]->setState(true);
-      m_active_food = fT;
+      std::cout << "\n\n\n\n\nx " << fX << " y " << fY << " T " << m_active_food << "\n";
+      m_food[m_active_food]->setPosition({fX, fY});
+      m_food[m_active_food]->setState(true);
     }
   // }
 }

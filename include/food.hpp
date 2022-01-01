@@ -11,6 +11,7 @@ class Food
 {
 public:
   Food(SDL_Colour colour, int type);
+  void reset();
 
   //Getters && Setters
   int getType() { return m_type; }

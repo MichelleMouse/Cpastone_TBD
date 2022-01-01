@@ -91,16 +91,21 @@ void Game::Update()
   //Checks if the snake ate the food
   switch (m_foods.impact(new_x, new_y)) {
     case 0: //Good food! Snakes grows and speed goes up
+      std::cout << "\n\n\nGood food!\n";
       score++;
       snake->GrowBody();
       snake->setSpeed(0.01);
+      PlaceFood();
       break;
 
     case 1: //Good food! Snake gains one extra live, up to four
+      std::cout << "\n\n\nExtra live!\n";
       snake->gainsLive();
+      PlaceFood();
       break;
 
     case 2: //Bad food :( Snake slows down and loses points(body parts)
+      std::cout << "\n\n\nBad food!\n";
       if(score >= 1)
       {
         score--;
@@ -109,10 +114,13 @@ void Game::Update()
       } else {
         snake->losesLive();
       }
+      PlaceFood();
       break;
 
-    case 3: //Bad food :( Snake loses a live
+    case 3: //Bad food :( Snake loses a life
+      std::cout << "\n\n\nLose life!\n";
       snake->losesLive();
+      PlaceFood();
       break;
 
     default:
@@ -120,7 +128,7 @@ void Game::Update()
       break;
   }
 
-  PlaceFood(); //Places new food
+  // PlaceFood(); //Places new food
 }
 
 //Loads the latest high scores
