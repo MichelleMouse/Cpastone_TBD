@@ -8,7 +8,6 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
   //Initiliases SDL2
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
   {
-    std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "SDL could not initialise\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
@@ -17,7 +16,6 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
   int flags = IMG_INIT_PNG | IMG_INIT_JPG;
   if((IMG_Init(flags) & flags) != flags)
   {
-    std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "IMG_Init: Failed to init required jpg and png support!\n";
     std::cerr << "IMG_Init: " << IMG_GetError() << "\n";
   }
@@ -26,7 +24,6 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
   m_window.reset(SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screen_w, m_screen_h, SDL_WINDOW_SHOWN));
   if(!m_window)
   {
-    std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "Window could not be created\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
@@ -35,7 +32,6 @@ Renderer::Renderer(const std::size_t screen_w, const std::size_t screen_h, const
   m_renderer.reset(SDL_CreateRenderer(m_window.get(), -1, SDL_RENDERER_ACCELERATED));
   if(!m_renderer)
   {
-    std::lock_guard<std::mutex> lock(m_mtx);
     std::cerr << "Renderer could not be created\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }

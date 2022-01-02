@@ -10,8 +10,7 @@ I will add/have added the following features to the game:
 🐍 The snakes dies when it runs into the edges of the grid, instead of going through  
 🐍 Replay button to restart the game from zero  
 🐍 Save the latest 5 highest scores  
-<!-- 🐍 Multithreading for the different types of food with different spawning time   -->
-🐍 There are four different types of food that affect the snake! The meaning of every food is as follows:  
+🐍 There are four different types of food that affect the snake! The bad foods timeout after a couple of seconds. The meaning of every food is as follows:  
 &nbsp;&nbsp;&nbsp;&nbsp;🟢 Good food that will increase your score, the snake grows and the speed will go up  
 &nbsp;&nbsp;&nbsp;&nbsp;🔵 Good food that will give you one extra live! You can gather up to 4 lives  
 &nbsp;&nbsp;&nbsp;&nbsp;🟠 The snake will slow down and shrink one block. You lose 1 point from your score  
@@ -86,13 +85,13 @@ The executable is within the `build` directory. You can run it as follows
   <tr>
     <td rowspan="3">Loops, Functions, I/O</td>
     <td>The project demonstrates and understanding of C++ functions and control structures</td>
-    <td>snake.hpp</td>
-    <td>9 12</td>
+    <td>snake.hpp <br/> renderer.hpp</td>
+    <td>8 11 <br/> 14 23 31</td>
   </tr>
   <tr>
     <td>The project reads data from a file and process the data, or the program writes data to a file</td>
     <td>game.cpp</td>
-    <td>135 154</td>
+    <td>141 160</td>
   </tr>
   <tr>
     <td>The project accepts user input and process the input</td>
@@ -108,32 +107,32 @@ The executable is within the `build` directory. You can run it as follows
   <tr>
     <td>Classes use appropriate access specifiers for class members</td>
     <td>snake.hpp <br/> food.hpp <br/> controller.hpp <br/> renderer.hpp <br/> game.hpp</td>
-    <td>11 47 <br> 12 27 36 48 <br/> 10 14 <br/> 34 44 <br/> 20 33 </td>
+    <td>10 46 <br> 12 26 35 47 <br/> 10 14 <br/> 33 43 <br/> 20 33 </td>
   </tr>
   <tr>
     <td>Class constructors utilise member initialisation lists</td>
-    <td>controller.cpp <br/> snake.hpp <br/> food.cpp <br/> game.cpp</td>
-    <td>6 <br/> 21 <br/> 7 21 <br/> 5</td>
+    <td>controller.cpp <br/> snake.hpp <br/> food.cpp <br/> game.cpp <br/> renderer.cpp</td>
+    <td>6 <br/> 21 <br/> 20 <br/> 5 <br/> 6</td>
   </tr>
   <tr>
     <td>Classes encapsulate behaviour</td>
     <td>snake.hpp <br/> food.hpp</td>
-    <td>24 to 41 <br/> 17 to 22</td>
+    <td>23-40 48-49 <br/> 13-22 36-45</td>
   </tr>
   <tr>
     <td>Overloaded functions allow the same function to operate on different parameters</td>
     <td>renderer.hpp</td>
-    <td>37 38</td>
+    <td>39 40</td>
   </tr>
   <tr>
     <td rowspan="2">Memory Management</td>
     <td>The project makes use of references in function declarations</td>
     <td>renderer.hpp <br/> game.hpp <br/> controller.hpp <br/> food.hpp </br> snake.hpp</td>
-    <td>43 44 45 <br/> 25 <br/> 11 </br> 45 46 </br> 50</td>
+    <td>40 <br/> 25 <br/> 11 22 </br> 44 45 </br> 49</td>
   </tr>
   <tr>
     <td>The project uses smart pointers instead of raw pointers</td>
     <td>renderer.hpp <br/> game.hpp <br/> controller.hpp <br/> food.hpp</td>
-    <td>46 47 48 <br/> 34 <br/> 22 </br> 49</td>
+    <td>40 45 46 47 <br/> 34 <br/> 11 22 </br> 48</td>
   </tr>
 </table>

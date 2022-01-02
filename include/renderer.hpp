@@ -2,7 +2,6 @@
 #define RENDERER_HPP
 
 #include <memory>
-#include <mutex>
 #include <utility>
 #include <string>
 #include <vector>
@@ -55,7 +54,6 @@ private:
   const std::size_t m_screen_h;
   const std::size_t m_grid_w;
   const std::size_t m_grid_h;
-  std::mutex m_mtx;
 
   //Typical behaviour methods
   inline SharedTexture make_shared(SDL_Texture* texture) { return SharedTexture(texture, SDL_DestroyTexture); }

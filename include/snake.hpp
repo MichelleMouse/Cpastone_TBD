@@ -2,7 +2,6 @@
 #define SNAKE_HPP
 
 #include <cmath>
-#include <mutex>
 #include <vector>
 #include "SDL.h"
 

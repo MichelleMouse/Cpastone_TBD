@@ -33,7 +33,7 @@ public:
 private:
   std::shared_ptr<Snake> snake;
   Foods m_foods;
-
+  Uint32 m_badFood_timestamp;
   int score{0};
   std::vector <std::pair <std::string, int> > high_scores;
 

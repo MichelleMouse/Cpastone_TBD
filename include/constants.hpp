@@ -5,5 +5,6 @@
 #define GRIDHEIGHT      32        //Number of positions the snake has for the given screen height
 #define SCREENWIDTH     640       //In pixels
 #define SCREENHEIGHT    640       //In pixels
+#define TYPESOFFOOD     4         //Total type of foods
 
 #endif /*   constants.hpp   */

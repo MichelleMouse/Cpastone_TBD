@@ -31,6 +31,7 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
 
     if(snake->getReset())
     {
+      PlaceFood();
       score = 0;
       snake->resetSnake();
       snake->setReset(false);
@@ -62,6 +63,13 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
       title_timestamp = frame_end;
     }
 
+    //Times out bad food
+    if((frame_end - m_badFood_timestamp >= 2000) && (m_foods.getType() >= 2))
+    {
+      m_badFood_timestamp = frame_end;
+      PlaceFood();
+    }
+
     //Delays the loop to achieve the correct frame rate
     if(frame_duration < target_frame_duration)
     {
@@ -73,7 +81,11 @@ void Game::Run(Controller const &controller, Renderer &renderer, std::size_t tar
 //Places new food for the snake
 void Game::PlaceFood()
 {
-  m_foods.placeFood(static_cast<int>(snake->getHeadX()), static_cast<int>(snake->getHeadY()));
+  m_foods.placeFood(static_cast<int>(snake->getHeadX()), static_cast<int>(snake->getHeadY()), snake->getAlive());
+  if(m_foods.getType() >= 2)
+  {
+    m_badFood_timestamp = SDL_GetTicks();
+  }
 }
 
 void Game::Update()
@@ -91,7 +103,6 @@ void Game::Update()
   //Checks if the snake ate the food
   switch (m_foods.impact(new_x, new_y)) {
     case 0: //Good food! Snakes grows and speed goes up
-      std::cout << "\n\n\nGood food!\n";
       score++;
       snake->GrowBody();
       snake->setSpeed(0.01);
@@ -99,13 +110,11 @@ void Game::Update()
       break;
 
     case 1: //Good food! Snake gains one extra live, up to four
-      std::cout << "\n\n\nExtra live!\n";
       snake->gainsLive();
       PlaceFood();
       break;
 
     case 2: //Bad food :( Snake slows down and loses points(body parts)
-      std::cout << "\n\n\nBad food!\n";
       if(score >= 1)
       {
         score--;
@@ -118,7 +127,6 @@ void Game::Update()
       break;
 
     case 3: //Bad food :( Snake loses a life
-      std::cout << "\n\n\nLose life!\n";
       snake->losesLive();
       PlaceFood();
       break;
@@ -127,8 +135,6 @@ void Game::Update()
       // std::cout << "No food!\n";
       break;
   }
-
-  // PlaceFood(); //Places new food
 }
 
 //Loads the latest high scores
@@ -161,7 +167,7 @@ void Game::SaveScore(int score)
     {
       // std::cout << "New highscore achieved! Congratulations AAA\n";
       auto pos = high_scores.begin() + i;
-      high_scores.insert(pos, std::make_pair("AAA", score));
+      high_scores.insert(pos, std::make_pair("UDA", score));
       high_scores.pop_back();
 
       //Saves the new vector in the file and returns

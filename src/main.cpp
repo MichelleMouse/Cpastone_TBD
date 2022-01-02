@@ -1,11 +1,8 @@
 #include <iostream>
-#include <mutex>
 #include "constants.hpp"
 #include "controller.hpp"
 #include "game.hpp"
 #include "renderer.hpp"
-
-std::mutex g_mtx;
 
 int main()
 {
@@ -22,7 +19,6 @@ int main()
   game.Run(controller, renderer, kMsPerFrame);
 
   //Prints score and size once the game is over
-  std::lock_guard<std::mutex> mLock(g_mtx);
   std::cout << "Thanks for playin, come back soon :D\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
